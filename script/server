@@ -1,0 +1,6 @@
+# change to repo root
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+docker build -t dragons .
+
+docker run -it --rm --name dragon-script -v "$PWD":/code dragons python dragons.py $1

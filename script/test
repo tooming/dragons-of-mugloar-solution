@@ -1,0 +1,8 @@
+# change to repo root
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+docker build -t dragons .
+
+docker run -it --rm --name dragon-test -v "$PWD":/code dragons py.test --cov-report html --cov=dragons -s -v test.py
+
+echo -e "Code coverage report can be seen at $(pwd)/htmlcov/index.html"
